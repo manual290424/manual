@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "List" %}{% endblock title %}
+{% block header %}{% endblock header %}
+{% block content %}
+<h2>{% trans "protocols" %}</h2>
+{% if protocol.count > 0 %}
+<div class="row">
+	<table id="myTable" class="table-manager" style="width:100%">
+		<thead>
+			<tr>
+				<th><p>{% trans "datep" %}<br>{% trans "user" %}</p></th>
+				<th><p>{% trans "teststask" %}</p></th>
+				<th><p>{% trans "result" %}</p></th>
+				<th><p>{% trans "protocol_comment" %}</p></th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for p in protocol %}
+			<tr>
+				<td><p>{{ p.datep | date:"d.m.Y H:i" }}<br>{{ p.user.first_name }} {{ p.user.last_name }}<br>{{ p.user }}</p></td>					
+				<td><p>{{ p.teststask.category }}<br>{{ p.teststask.title }}</p></td>
+				<td>
+					<p>
+						<a data-bs-toggle="collapse" href="#protocol_collapse{{p.id}}" role="button" aria-expanded="false" aria-controls="protocol_collapse{{p.id}}">
+							{{ p.result }}
+						</a>
+					</p>
+					<div class="collapse" id="protocol_collapse{{p.id}}">
+						<p>{{ p.details | safe | linebreaks}}</p>
+					</div>	
+				</td>
+				<td>
+					<p>{% if p.comment != None %}{{ p.comment | safe | linebreaks}}{% endif %}</p>
+					<a href="{% url 'protocol_edit' p.id %}">{% trans "Change" %}</a>
+				</td>				
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endif %}
+{% endblock content %}
+

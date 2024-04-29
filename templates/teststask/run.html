@@ -1,0 +1,248 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "run test" %}{% endblock title %}
+{% block content %}
+
+<style>
+	/* Mark input boxes that gets an error on validation: */
+	input.invalid {
+	  background-color: #ffdddd;
+	}
+
+	/* Hide all steps by default: */
+	.tab {
+	  display: none;
+	}
+
+	button {
+	  background-color: #7FFFD4;
+	  color: #191970;
+	  border: none;
+	  padding: 5px 10px;
+	  width: 100px;
+	}
+
+	button:hover {
+	  opacity: 0.8;
+	}
+
+	#prevBtn {
+	  background-color: #AFEEEE;
+	}
+
+	/* Make circles that indicate the steps of the form: */
+	.step {
+	  height: 15px;
+	  width: 15px;
+	  margin: 0 2px;
+	  background-color: #bbbbbb;
+	  border: none;  
+	  border-radius: 50%;
+	  display: inline-block;
+	  opacity: 0.5;
+	}
+
+	.step.active {
+	  opacity: 1;
+	}
+
+	/* Mark the steps that are finished and valid: */
+	.step.finish {
+	  background-color: #4CAF50;
+	}
+</style>
+
+<h2>{{ teststask_category }}</h2>
+<h2>{{ teststask_title }}</h2>
+{% if question.count > 0 %}
+	<form class="form-horizontal" enctype="multipart/form-data" method="post">
+		{% csrf_token %}		
+		<div style="overflow:auto;">
+			<div style="float:left;">
+				<table>
+					<tr>
+						<td>
+							<button type="submit" style="width:100px" id="accept_btn" name="accept_btn" class="btn btn-outline-success" onclick="return confirm('Завершить тест?')">{% trans "Accept" %}</button>
+						</td>						
+						<td>
+							<button type="submit" hidden style="width:100px" id="accept_timer_btn" name="accept_timer_btn" class="btn btn-outline-success">{% trans "Timer" %}</button>
+						</td>						
+						<td>
+							<input type="hidden" id="minute" value="{{ minutes }}">				
+						</td>						
+						<td>
+							<p id="display" style="font-weight: bold; "><strong>{{ minutes }}</strong></p>
+						</td>						
+					</tr>
+				</table>
+			</div>
+			<div style="float:right;">
+				<button type="button" id="prevBtn" onclick="nextPrev(-1)">{% trans "Previous" %}</button>
+				<button type="button" id="nextBtn" onclick="nextPrev(1)">{% trans "Next" %}</button>
+			</div>
+		</div>
+		<div style="text-align:center;margin-top:40px;">    
+			{% for q in question %}
+				<span class="step"></span>
+			{% endfor %}
+		</div>
+		
+		<!-- <h3>{{ question.question }}</h3> -->
+		{% for q in question %}
+		<!-- <div class="row" style="padding:5px;width:100%;"> -->
+		<div class="tab">
+			<div class="card" style="width:100%;">
+				<div class="card-header">
+					<h5 class="mb-0">{{ q.question | safe | linebreaks }}</h5>	
+											
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-8">	
+							{% if q.multi == True %}
+								<p><input type="checkbox"  name="cbox1{{ q.id }}" value="on1" /> {{ q.reply1 | safe }}<br />
+								{% if q.reply2 != "" %}
+									<p><input type="checkbox"  name="cbox2{{ q.id }}" value="on2" /> {{ q.reply2 | safe }}</p>
+								{% endif %}
+								{% if q.reply3 != "" %}						
+									<p><input type="checkbox"  name="cbox3{{ q.id }}" value="on3" /> {{ q.reply3 | safe }}</p>
+								{% endif %}
+								{% if q.reply4 != "" %}						
+									<p><input type="checkbox"  name="cbox4{{ q.id }}" value="on4" /> {{ q.reply4 | safe }}</p>
+								{% endif %}
+								{% if q.reply5 != "" %}						
+									<p><input type="checkbox"  name="cbox5{{ q.id }}" value="on5" /> {{ q.reply5 | safe }}</p>
+								{% endif %}
+							{% else %}
+								<p><input type="radio"  name="radio{{ q.id }}" value="on1" /> {{ q.reply1 | safe }}</p>
+								{% if q.reply2 != "" %}
+									<p><input type="radio"  name="radio{{ q.id }}" value="on2" /> {{ q.reply2 | safe }}</p>
+								{% endif %}
+								{% if q.reply3 != "" %}
+									<p><input type="radio"  name="radio{{ q.id }}" value="on3" /> {{ q.reply3 | safe }}</p>
+								{% endif %}
+								{% if q.reply4 != "" %}
+									<p><input type="radio"  name="radio{{ q.id }}" value="on4" /> {{ q.reply4 | safe }}</p>
+								{% endif %}
+								{% if q.reply5 != "" %}
+									<p><input type="radio"  name="radio{{ q.id }}" value="on5" /> {{ q.reply5 | safe }}</p>
+								{% endif %}
+							{% endif %}			
+						</div>
+						<div class="col-md-4">
+							{% if q.photo.url != None %}
+								<img class="light-zoom" style="width:100%; max-width:600px; padding:10px" src="{{ q.photo.url}}" alt="{{ q.id }}">
+							{% endif %}
+						</div>
+					</div>									
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+		
+		
+		<div class="div-button-center">
+			<!--<a class="btn btn-outline-info" style="width:100px" href="{% url 'teststask_list' %}" onclick="return confirm('Завершить тест?')>{% trans "Back" %}</a>-->
+			<!-- <button type="submit" style="width:100px" id="accept_btn" name="accept_btn" class="btn btn-outline-success" onclick="return confirm('Завершить тест?')">{% trans "Accept" %}</button> -->
+			<!-- <button type="submit" hidden style="width:100px" id="accept_timer_btn" name="accept_timer_btn" class="btn btn-outline-success">{% trans "Timer" %}</button> -->
+		</div>	
+	</form>
+
+{% else %}
+<a href="{% url 'teststask_list'%}">{% trans "Not question" %}</a>
+{% endif %}
+
+<script>
+	// Считать время выполнения
+	var y = parseInt(document.getElementById("minute").value);
+	// Запуск таймера 
+	timerRun(new Date(), y);	
+	// Таймер
+	function timerRun(t,x){		
+		// Установить время окончания работ: ко времени t добавить x минут
+		t.setMinutes(t.getMinutes() + x);
+		var countDownDate = new Date(t).getTime();
+		// Обратный отсчет обновляется каждую секунду
+		var x = setInterval(function() {
+			// Текущее время и дата
+			var now = new Date().getTime();
+			// Разница между дата останова таймера и текущей датой
+			var distance = countDownDate - now;
+			// Расчет дней, часов, минут, секунд
+			//var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+			var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			if (hours.toString().length==1) {hours = '0' + hours;};
+			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			if (minutes.toString().length==1) {minutes = '0' + minutes;};
+			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+			if (seconds.toString().length==1) {seconds = '0' + seconds;};
+			// Вывод результата в элемент с id="display"
+			document.getElementById("display").innerHTML = + hours + ":" + minutes + ":" + seconds + "";
+			// Если отcчет времени завершен - принудительное завершениеы
+			if (distance < 0) {
+				clearInterval(x);
+				$("#accept_timer_btn").click();
+				alert("Timeout");
+			}
+		}, 1000);
+	}	
+</script>
+
+<script>
+var currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the crurrent tab
+
+function showTab(n) {
+  // This function will display the specified tab of the form...
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  //... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+  <!-- if (n == (x.length - 1)) { -->
+    <!-- document.getElementById("nextBtn").innerHTML = "Submit"; -->
+  <!-- } else { -->
+    <!-- document.getElementById("nextBtn").innerHTML = "Next"; -->
+  <!-- } -->
+  if (n == (x.length - 1)) {
+	document.getElementById("nextBtn").style.display = "none";
+  } else {
+	document.getElementById("nextBtn").style.display = "inline";
+    document.getElementById("nextBtn").innerHTML = ">>";
+  }
+  //... and run a function that will display the correct step indicator:
+  fixStepIndicator(n)
+}
+
+function nextPrev(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form...
+  if (currentTab >= x.length) {
+    // ... the form gets submitted:
+    document.getElementById("regForm").submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+}
+
+
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+  var i, x = document.getElementsByClassName("step");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class on the current step:
+  x[n].className += " active";
+}
+</script>
+{% endblock content %}

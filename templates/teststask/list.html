@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "List" %}{% endblock title %}
+{% block header %}{% endblock header %}
+{% block content %}
+<h2>{% trans "Select Test" %}</h2>
+{% if teststask.count > 0 %}
+<div class="row">
+	<table id="myTable" class="table-manager" style="width:100%">
+		<thead>
+			<tr>
+				<th><p>{% trans "category_title" %}</p></th>
+				<th><p>{% trans "teststask_title" %}</p></th>
+				<th><p></p></th>				
+			</tr>
+		</thead>
+		<tbody>
+			{% for p in teststask %}
+			<tr>
+				<td><p>{{ p.category }}</p></td>
+				<td><p>{{ p.title }}</p></td>
+				<td><p>
+					<a onclick="return confirm('Запустить тестирование {{ p.title }}?')" href="{% url 'teststask_run' p.id %}">{% trans "Run" %}</a> 
+				</p></td>			
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endif %}
+{% endblock content %}
+

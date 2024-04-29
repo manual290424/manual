@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "List" %}{% endblock title %}
+{% block header %}{% endblock header %}
+{% block content %}
+<h2>{% trans "questions" %}</h2>
+<h3>{{ teststask.category }}</h3>
+<h3>{{ teststask.title }}</h3>
+<p>{{ teststask.details }}</p>
+<p>{% trans "minutes" %}: {{ teststask.minutes }}</p>
+<p>{% trans "limit" %}: {{ teststask.limit }}</p>
+<hr>
+<p><a href="{% url 'question_create' teststask.id %}">{% trans "Add" %}</a></p>
+<hr>
+{% if question.count > 0 %}
+<div class="row">
+	<table id="myTable" class="table-manager" style="width:100%">
+		<thead>
+			<tr>
+				<th><p>{% trans "question" %}</p></th>
+				<th><p>{% trans "answers" %}</p></th>
+				<th><p></p></th>				
+			</tr>
+		</thead>
+		<tbody>
+			{% for q in question %}
+			<tr>
+				<td><p>{{ q.question | safe | linebreaks }}</p></td>
+				<td><p>
+					{% if q.ok1 %}+{% else %}-{% endif %}
+					{% if q.ok2 %}+{% else %}-{% endif %}
+					{% if q.ok3 %}+{% else %}-{% endif %}
+					{% if q.ok4 %}+{% else %}-{% endif %}
+					{% if q.ok5 %}+{% else %}-{% endif %}
+				</p></td>
+				<td><p>
+					<a href="{% url 'question_edit' q.id %}">{% trans "Change" %}</a> <br>
+					<a href="{% url 'question_read' q.id %}">{% trans "View" %}</a> <br>
+					<a onclick="return confirm('Удалить запись?')" href="{% url 'question_delete' q.id %}">{% trans "Delete" %}</a>
+				</p></td>			
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>	
+</div>
+<div class="row">
+	<a class="btn btn-outline-info" style="width:100px" href="{% url 'teststask_index' %}">{% trans "Back" %}</a> 
+</div>
+{% endif %}
+{% endblock content %}
+

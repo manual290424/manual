@@ -1,0 +1,332 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-29 19:50+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%"
+"100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\guide\forms.py:23 .\guide\models.py:35 .\templates\category\index.html:14
+#: .\templates\teststask\index.html:14 .\templates\teststask\list.html:12
+msgid "category_title"
+msgstr "Название категории"
+
+#: .\guide\forms.py:33 .\guide\forms.py:55 .\guide\forms.py:159
+msgid "Minimum length 3 characters"
+msgstr "Минимальная длина 3 символа"
+
+#: .\guide\forms.py:49 .\templates\base.html:58
+#: .\templates\category\create.html:5 .\templates\category\edit.html:5
+#: .\templates\category\index.html:6 .\templates\category\read.html:5
+#: .\templates\question\read.html:7 .\templates\teststask\read.html:8
+msgid "category"
+msgstr "Категория"
+
+#: .\guide\forms.py:62
+msgid "Minimum time 3 minutes"
+msgstr "Минимальное время 3 минуты"
+
+#: .\guide\forms.py:69
+msgid "Minimum value 50%"
+msgstr "Минимальное значение 50%"
+
+#: .\guide\forms.py:71
+msgid "Maximum value 100%"
+msgstr "Минимальное значение 100%"
+
+#: .\guide\forms.py:93 .\templates\protocol\edit.html:9
+#: .\templates\protocol\index.html:13 .\templates\protocol\list.html:15
+#: .\templates\teststask\create.html:5 .\templates\teststask\edit.html:5
+#: .\templates\teststask\read.html:5
+msgid "teststask"
+msgstr "Тестовое задание"
+
+#: .\guide\forms.py:99
+msgid "Minimum length 7 characters"
+msgstr "Минимальная длина 7 символов"
+
+#: .\guide\forms.py:106 .\guide\forms.py:113
+msgid "Minimum length 1 characters"
+msgstr "Минимальная длина 3 символа"
+
+#: .\guide\forms.py:152 .\guide\models.py:123
+#: .\templates\protocol\index.html:15 .\templates\protocol\list.html:17
+msgid "protocol_comment"
+msgstr "Комментарии"
+
+#: .\guide\models.py:47 .\templates\teststask\index.html:15
+#: .\templates\teststask\list.html:13
+msgid "teststask_title"
+msgstr "Название тестового задания"
+
+#: .\guide\models.py:48 .\templates\teststask\read.html:14
+msgid "teststask_details"
+msgstr "Описание тестового задания"
+
+#: .\guide\models.py:49 .\templates\question\index.html:10
+#: .\templates\teststask\index.html:16 .\templates\teststask\read.html:18
+msgid "minutes"
+msgstr "Максимальное время выполнения, мин."
+
+#: .\guide\models.py:50 .\templates\question\index.html:11
+#: .\templates\teststask\index.html:17 .\templates\teststask\read.html:22
+msgid "limit"
+msgstr "Проходной балл, %"
+
+#: .\guide\models.py:68 .\templates\question\index.html:20
+#: .\templates\question\read.html:13
+msgid "question"
+msgstr "Вопрос"
+
+#: .\guide\models.py:69
+msgid "photo"
+msgstr "Фотография"
+
+#: .\guide\models.py:70
+msgid "reply1"
+msgstr "Вариант ответа №1"
+
+#: .\guide\models.py:71
+msgid "ok1"
+msgstr "Верно (да/нет)"
+
+#: .\guide\models.py:72
+msgid "reply2"
+msgstr "Вариант ответа №2"
+
+#: .\guide\models.py:73
+msgid "ok2"
+msgstr "Верно (да/нет)"
+
+#: .\guide\models.py:74
+msgid "reply3"
+msgstr "Вариант ответа №3"
+
+#: .\guide\models.py:75
+msgid "ok3"
+msgstr "Верно (да/нет)"
+
+#: .\guide\models.py:76
+msgid "reply4"
+msgstr "Вариант ответа №4"
+
+#: .\guide\models.py:77
+msgid "ok4"
+msgstr "Верно (да/нет)"
+
+#: .\guide\models.py:78
+msgid "reply5"
+msgstr "Вариант ответа №5"
+
+#: .\guide\models.py:79
+msgid "ok5"
+msgstr "Верно (да/нет)"
+
+#: .\guide\models.py:119 .\templates\protocol\index.html:12
+#: .\templates\protocol\list.html:14
+msgid "datep"
+msgstr "Дата"
+
+#: .\guide\models.py:120 .\templates\protocol\edit.html:10
+#: .\templates\protocol\index.html:14 .\templates\protocol\list.html:16
+msgid "result"
+msgstr "Результат"
+
+#: .\guide\models.py:121 .\templates\protocol\edit.html:11
+msgid "protocol_details"
+msgstr "Подробности выполнения задания"
+
+#: .\guide\views.py:332
+msgid "Test task completed"
+msgstr "Тестовое задание выполнено"
+
+#: .\guide\views.py:334
+msgid "Test task failed"
+msgstr "Тестовое задание не выполнено"
+
+#: .\guide\views.py:336
+msgid "Wrong answers"
+msgstr "Неправильные ответы"
+
+#: .\guide\views.py:341
+msgid "Total Questions"
+msgstr "Всего вопросов"
+
+#: .\guide\views.py:341
+msgid "Total replied"
+msgstr "Всего отвечено"
+
+#: .\guide\views.py:341
+msgid "Correctly answered"
+msgstr "Правильно отвечено"
+
+#: .\templates\base.html:45
+msgid "Home"
+msgstr "Главная"
+
+#: .\templates\base.html:47
+msgid "lectures"
+msgstr "Лекции"
+
+#: .\templates\base.html:60 .\templates\teststask\index.html:6
+msgid "teststasks"
+msgstr "Тестовые задания"
+
+#: .\templates\base.html:61 .\templates\base.html:64
+#: .\templates\protocol\index.html:6 .\templates\protocol\list.html:3
+msgid "protocols"
+msgstr "Протокол выполнения"
+
+#: .\templates\base.html:63 .\templates\protocol\list.html:7
+msgid "tests"
+msgstr "Тестовые задания"
+
+#: .\templates\base.html:67
+msgid "My account"
+msgstr "Моя учетная запись"
+
+#: .\templates\base.html:68
+msgid "Change password"
+msgstr "Изменить пароль"
+
+#: .\templates\base.html:70
+msgid "Log out"
+msgstr "Выход"
+
+#: .\templates\base.html:75
+msgid "Log In"
+msgstr "Вход"
+
+#: .\templates\base.html:76
+msgid "Sign up"
+msgstr "Регистрация"
+
+#: .\templates\category\create.html:3 .\templates\category\index.html:7
+#: .\templates\question\create.html:3 .\templates\question\create.html:5
+#: .\templates\question\index.html:13 .\templates\teststask\create.html:3
+#: .\templates\teststask\index.html:7
+msgid "Add"
+msgstr "Добавить"
+
+#: .\templates\category\create.html:12 .\templates\category\edit.html:12
+#: .\templates\protocol\edit.html:16 .\templates\question\create.html:14
+#: .\templates\question\edit.html:14 .\templates\teststask\create.html:12
+#: .\templates\teststask\edit.html:12
+msgid "Save"
+msgstr "Сохранить"
+
+#: .\templates\category\create.html:13 .\templates\category\edit.html:13
+#: .\templates\category\read.html:18 .\templates\protocol\edit.html:17
+#: .\templates\question\create.html:15 .\templates\question\edit.html:15
+#: .\templates\question\index.html:47 .\templates\question\read.html:57
+#: .\templates\teststask\create.html:13 .\templates\teststask\edit.html:13
+#: .\templates\teststask\read.html:32 .\templates\teststask\run.html:145
+msgid "Back"
+msgstr "Назад"
+
+#: .\templates\category\edit.html:3 .\templates\category\index.html:24
+#: .\templates\protocol\edit.html:3 .\templates\protocol\index.html:35
+#: .\templates\question\edit.html:3 .\templates\question\edit.html:5
+#: .\templates\question\index.html:37 .\templates\teststask\edit.html:3
+#: .\templates\teststask\index.html:31
+msgid "Change"
+msgstr "Изменить"
+
+#: .\templates\category\index.html:3 .\templates\protocol\index.html:3
+#: .\templates\question\index.html:3 .\templates\teststask\index.html:3
+#: .\templates\teststask\list.html:3
+msgid "List"
+msgstr "Список"
+
+#: .\templates\category\index.html:25 .\templates\category\read.html:3
+#: .\templates\question\index.html:38 .\templates\question\read.html:3
+#: .\templates\teststask\index.html:32 .\templates\teststask\read.html:3
+msgid "View"
+msgstr "Просмотреть"
+
+#: .\templates\category\index.html:26 .\templates\question\index.html:39
+#: .\templates\teststask\index.html:33
+msgid "Delete"
+msgstr "Удалить"
+
+#: .\templates\index.html:4 .\templates\registration\logged_out.html:4
+#: .\templates\registration\login.html:4
+#: .\templates\registration\password_change_done.html:3
+#: .\templates\registration\password_change_form.html:3
+#: .\templates\registration\password_reset_complete.html:4
+#: .\templates\registration\password_reset_confirm.html:4
+#: .\templates\registration\password_reset_done.html:4
+#: .\templates\registration\password_reset_form.html:4
+#: .\templates\registration\register_done.html:4
+msgid "App Name"
+msgstr "Manual"
+
+#: .\templates\lecture\index.html:4
+msgid "lecture"
+msgstr "Лекция"
+
+#: .\templates\protocol\edit.html:5
+msgid "protocol"
+msgstr "Протокол"
+
+#: .\templates\protocol\index.html:12 .\templates\protocol\list.html:14
+msgid "user"
+msgstr "Пользователь"
+
+#: .\templates\question\index.html:6 .\templates\teststask\index.html:18
+#: .\templates\teststask\index.html:29
+msgid "questions"
+msgstr "Вопросы"
+
+#: .\templates\question\index.html:21 .\templates\question\read.html:22
+msgid "answers"
+msgstr "Ответы"
+
+#: .\templates\question\read.html:8 .\templates\teststask\read.html:9
+msgid "title"
+msgstr "Название"
+
+#: .\templates\teststask\list.html:6
+msgid "Select Test"
+msgstr "Выберите тест"
+
+#: .\templates\teststask\list.html:23
+msgid "Run"
+msgstr "Выполнить"
+
+#: .\templates\teststask\run.html:3
+msgid "run test"
+msgstr "Выполнить"
+
+#: .\templates\teststask\run.html:65 .\templates\teststask\run.html:146
+msgid "Accept"
+msgstr "Принять"
+
+#: .\templates\teststask\run.html:68 .\templates\teststask\run.html:147
+msgid "Timer"
+msgstr "Осталось времени"
+
+#: .\templates\teststask\run.html:80
+msgid "Previous"
+msgstr "<<"
+
+#: .\templates\teststask\run.html:81
+msgid "Next"
+msgstr ">>"
+
+#: .\templates\teststask\run.html:152
+msgid "Not question"
+msgstr "Нет вопросов"

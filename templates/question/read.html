@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "View" %}{% endblock title %}
+{% block content %}
+<div class="card">
+	<div class="card-header">			
+		<h3><strong>{% trans "category" %}</strong>: {{ question.teststask.category }}</h3>
+		<h3><strong>{% trans "title" %}</strong>: {{ question.teststask.title }}</h3>
+	</div>
+	<div class="card-body">
+		<div class="row">
+			<div class="col-md-8">				
+				<h4>{% trans "question" %}:</h4>			
+				<p>{{ question.question | safe | linebreaks}}</p>					
+			</div>
+			<div class="col-md-4">
+				{% if question.photo.url != None %}
+					<img style="width:100%; max-width:400px;" src="{{ question.photo.url}}" alt="{{ question.photo.url }}">
+				{% endif %}
+			</div>
+		</div>						
+		<h4>{% trans "answers" %}:</h4>	
+		<table>						
+			<tr>				
+				<td><h1>{% if question.ok1 == True %} + {% endif %}</h1></td>
+				<td><p>{{ question.reply1 | safe | linebreaks }}</p></td>
+			</tr>
+			<tr>				
+				<td><h1>{% if question.ok2 == True %} + {% endif %}</h1></td>
+				<td><p>{{ question.reply2 | safe | linebreaks }}</p></td>
+			</tr>
+			{% if question.reply3 != "" %}
+			<tr>				
+				<td><h1>{% if question.ok3 == True %} + {% endif %}</h1></td>
+				<td><p>{{ question.reply3 | safe | linebreaks }}</p></td>
+			</tr>
+			{% endif %}	 
+			{% if question.reply4 != "" %}
+			<tr>
+				<td><h1>{% if question.ok4 == True %} + {% endif %}</h1></td>
+				<td><p>{{ question.reply4 | safe | linebreaks }}</p></td>				
+			</tr>
+			{% endif %}	 
+			{% if question.reply5 != "" %}
+			<tr>
+				<td><h1>{% if question.ok5 == True %} + {% endif %}</h1></td>
+				<td><p>{{ question.reply5 | safe | linebreaks }}</p></td>				
+			</tr>
+			{% endif %}	 
+		</table>
+	</div>
+	<div class="card-footer">				
+	</div>		
+</div>
+<br>
+<div class="div-button-center">
+	<a class="btn btn-outline-info" style="width:100px" href="{% url 'question_index' teststask_id %}">{% trans "Back" %}</a> 	
+</div>	
+{% endblock content %}

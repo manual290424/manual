@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Change" %}{% endblock title %}
+{% block content %}
+<h2>{% trans "protocol" %}</h2>
+<form method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	<p>{{ protocol.datep | date:"d.m.Y H:i" }}<br>{{ protocol.user.first_name }} {{ protocol.user.last_name }}<br>{{ protocol.user }}</p>
+	<p><strong>{% trans "teststask" %}</strong>: {{ protocol.teststask.category }}<br>{{ protocol.teststask.title }}</p>
+	<p><strong>{% trans "result" %}</strong>: {{ protocol.result}}</p>
+	<p><strong>{% trans "protocol_details" %}</strong>: {{ protocol.details | safe | linebreaks}}</p>
+	<table>
+		{{ form }}
+	</table>
+	<div class="div-button-center">
+		<button type="submit" class="btn btn-outline-success" style="width:100px">{% trans "Save" %}</button>	
+		<a class="btn btn-outline-info" style="width:100px" href="{% url 'protocol_index' %}">{% trans "Back" %}</a> 	
+	</div>	
+</form>
+{% endblock content %}
