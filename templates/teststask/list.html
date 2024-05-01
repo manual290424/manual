@@ -20,7 +20,7 @@
 				<td><p>{{ p.category }}</p></td>
 				<td><p>{{ p.title }}</p></td>
 				<td><p>
-					<a onclick="return confirm('Запустить тестирование {{ p.title }}?')" href="{% url 'teststask_run' p.id %}">{% trans "Run" %}</a> 
+					<a onclick="return confirm('{% trans "run_testing" %} {{ p.title }}?')" href="{% url 'teststask_run' p.id %}">{% trans "Run" %}</a> 
 				</p></td>			
 			</tr>
 			{% endfor %}

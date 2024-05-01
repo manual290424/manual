@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-29 19:50+0500\n"
+"POT-Creation-Date: 2024-05-01 07:44+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -149,27 +149,27 @@ msgstr "Результат"
 msgid "protocol_details"
 msgstr "Подробности выполнения задания"
 
-#: .\guide\views.py:332
+#: .\guide\views.py:329
 msgid "Test task completed"
 msgstr "Тестовое задание выполнено"
 
-#: .\guide\views.py:334
+#: .\guide\views.py:331
 msgid "Test task failed"
 msgstr "Тестовое задание не выполнено"
 
-#: .\guide\views.py:336
+#: .\guide\views.py:333
 msgid "Wrong answers"
 msgstr "Неправильные ответы"
 
-#: .\guide\views.py:341
+#: .\guide\views.py:338
 msgid "Total Questions"
 msgstr "Всего вопросов"
 
-#: .\guide\views.py:341
+#: .\guide\views.py:338
 msgid "Total replied"
 msgstr "Всего отвечено"
 
-#: .\guide\views.py:341
+#: .\guide\views.py:338
 msgid "Correctly answered"
 msgstr "Правильно отвечено"
 
@@ -304,12 +304,20 @@ msgid "Select Test"
 msgstr "Выберите тест"
 
 #: .\templates\teststask\list.html:23
+msgid "run_testing"
+msgstr "Выполнить"
+
+#: .\templates\teststask\list.html:23
 msgid "Run"
 msgstr "Выполнить"
 
 #: .\templates\teststask\run.html:3
 msgid "run test"
 msgstr "Выполнить"
+
+#: .\templates\teststask\run.html:65
+msgid "Finish_the_test?"
+msgstr "Завершить тест?"
 
 #: .\templates\teststask\run.html:65 .\templates\teststask\run.html:146
 msgid "Accept"

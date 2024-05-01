@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-29 19:53+0500\n"
+"POT-Creation-Date: 2024-05-01 07:44+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
 #: .\guide\forms.py:23 .\guide\models.py:35 .\templates\category\index.html:14
 #: .\templates\teststask\index.html:14 .\templates\teststask\list.html:12
 msgid "category_title"
@@ -146,27 +147,27 @@ msgstr "Нәтиже"
 msgid "protocol_details"
 msgstr "Тапсырма мәліметтері"
 
-#: .\guide\views.py:332
+#: .\guide\views.py:329
 msgid "Test task completed"
 msgstr "Тест тапсырмасы орындалды"
 
-#: .\guide\views.py:334
+#: .\guide\views.py:331
 msgid "Test task failed"
 msgstr "Тест тапсырмасы орындалмады"
 
-#: .\guide\views.py:336
+#: .\guide\views.py:333
 msgid "Wrong answers"
 msgstr "Дұрыс емес жауаптар"
 
-#: .\guide\views.py:341
+#: .\guide\views.py:338
 msgid "Total Questions"
 msgstr "Жалпы сұрақтар"
 
-#: .\guide\views.py:341
+#: .\guide\views.py:338
 msgid "Total replied"
 msgstr "Барлығы жауап берді"
 
-#: .\guide\views.py:341
+#: .\guide\views.py:338
 msgid "Correctly answered"
 msgstr "Дұрыс жауап"
 
@@ -301,12 +302,20 @@ msgid "Select Test"
 msgstr "Сынақты таңдаңыз"
 
 #: .\templates\teststask\list.html:23
+msgid "run_testing"
+msgstr "Орындау"
+
+#: .\templates\teststask\list.html:23
 msgid "Run"
 msgstr "Орындау"
 
 #: .\templates\teststask\run.html:3
 msgid "run test"
 msgstr "Орындау"
+
+#: .\templates\teststask\run.html:65
+msgid "Finish_the_test?"
+msgstr "Тестті аяқтайсыз ба?"
 
 #: .\templates\teststask\run.html:65 .\templates\teststask\run.html:146
 msgid "Accept"
